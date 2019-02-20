@@ -6,11 +6,11 @@ import play.api.data.format.Formatter
 
 trait Formatters {
 
-  implicit val nonEmptyString: Formatter[NonEmptyString] = {
-    new Formatter[NonEmptyString] {
+  implicit val nonEmptyString: Formatter[NonEmptyString] = new Formatter[NonEmptyString] {
 
       override def bind(key: String, data: Map[String, String]): Either[Seq[FormError], NonEmptyString] = {
-        data.get(key)
+        data
+          .get(key)
           .flatMap(NonEmptyString(_))
           .map(Right(_))
           .getOrElse(Left(Seq(FormError(key, "error.nonemptystring.empty"))))
@@ -19,5 +19,4 @@ trait Formatters {
       override def unbind(key: String, value: NonEmptyString): Map[String, String] =
         Map(key -> value.value)
     }
-  }
 }

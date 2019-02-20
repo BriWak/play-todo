@@ -1,1 +1,4 @@
 error.nonemptystring.empty=Should not be empty
+error.string.too-long=too long
+error.string.non-alpha=non alpha
+error.required=required

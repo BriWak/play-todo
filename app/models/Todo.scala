@@ -2,7 +2,7 @@ package models
 
 import java.time.LocalDate
 
-sealed abstract case class  NonEmptyString(value: String)
+sealed abstract case class NonEmptyString(value: String)
 
 object NonEmptyString {
 
